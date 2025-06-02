@@ -1,45 +1,65 @@
-# datafun-05-sql
+# 📚 Books & Authors Database Project
 
-## Overview
-This project demonstrates how to use Python and SQL (SQLite) to create, populate, and query a relational database. It is part of the CC5.2 module for learning file-based relational databases and basic data manipulation.
+This project is part of **Module 5 (SQL & Python)**. It demonstrates how to design, create, and query a simple relational database using **SQLite**, **Python**, and **CSV** data files.
 
-## Project Structure
+---
+
+## ✅ Overview
+
+We created a database called `book_db.sqlite` that contains two related tables:
+
+- **authors**: Each record stores an author's unique ID, first name, and last name.
+- **books**: Each record includes a book's ID, title, publication year, foreign key to author, and a `is_favorite` flag.
+
+---
+
+## 📂 Project Structure
+
 datafun-05-sql/
-├── data/ # Placeholder for CSV files
-├── sql_create/ # SQL scripts for table creation
-├── sql_insert/ # SQL scripts for inserting data
-├── sql_queries/ # SQL scripts for querying data
-├── db_connection.py # Handles SQLite connection
-├── create_tables.py # Executes table creation SQL
-├── insert_data.py # Executes data insertion SQL
-├── query_data.py # Executes SELECT queries and displays results
-├── main.py # Tests database connection
-├── requirements.txt # Python package requirements
-└── README.md # Project documentation
+│
+├── books/
+│ ├── create_tables.sql # SQL file to create the database schema
+│ ├── create_tables.py # Python script to execute the SQL file
+│ ├── insert_data.py # Python script to import CSV data
+│ ├── query_data.py # Python script to query and display results
+│ ├── book_db.sqlite # The actual SQLite database
+│
+├── data/
+│ ├── authors.csv # CSV data for authors
+│ ├── books.csv # CSV data for books
+
+---
+
+## 🧪 How to Use
+
+To set up and run the project:
+
+1. **Activate the virtual environment** (if not already):
+   ```bash
+   .\.venv\Scripts\Activate.ps1     # On Windows PowerShell
+
+🛠 Technologies Used
+
+Python 3.13
+
+SQLite (via sqlite3 module)
+
+CSV file processing (csv module)
+
+VS Code
+
+Git / GitHub for version control
+
+📌 Notes
+Data is loaded from CSV files stored in the data/ directory.
+
+The foreign key relationship ensures that each book references a valid author.
+
+The system prints clear logs to confirm each operation.
+
+👨‍💻 Author
+Sabri Hamdaoui
+Northwest Missouri State University
+Data Analytics - Module 5 Project
 
 
-## Setup Instructions
-
-### 1. Create and activate virtual environment
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate   # Windows
-
-##2. Install dependencies
-
-pip install pandas
-pip freeze > requirements.txt
-
-###3-Execution Commands
-
-python create_tables.py     # Create 'customers' table
-python insert_data.py       # Insert sample customer data
-python query_data.py        # Query and display data from 'customers'
-
-## Output Example ##
-
-✅ Query Results:
-(1, 'Alice', 'Johnson', 'alice.johnson@example.com', '2024-11-01')
-(2, 'Bob', 'Smith', 'bob.smith@example.com', '2024-12-15')
-(3, 'Charlie', 'Lee', 'charlie.lee@example.com', '2025-01-10')
