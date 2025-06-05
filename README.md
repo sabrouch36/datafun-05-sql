@@ -1,15 +1,8 @@
-# 📚 Books & Authors Database Project
+# 📘 DataFun-05-SQL Project
 
-This project is part of **Module 5 (SQL & Python)**. It demonstrates how to design, create, and query a simple relational database using **SQLite**, **Python**, and **CSV** data files.
+## 🧠 Project Overview
 
----
-
-## ✅ Overview
-
-We created a database called `book_db.sqlite` that contains two related tables:
-
-- **authors**: Each record stores an author's unique ID, first name, and last name.
-- **books**: Each record includes a book's ID, title, publication year, foreign key to author, and a `is_favorite` flag.
+This project demonstrates core SQL and Python skills for working with relational databases using `SQLite`. It includes creating a database, defining tables, inserting records, and querying data using both SQL files and Python scripts.
 
 ---
 
@@ -17,49 +10,82 @@ We created a database called `book_db.sqlite` that contains two related tables:
 
 datafun-05-sql/
 │
-├── books/
-│ ├── create_tables.sql # SQL file to create the database schema
-│ ├── create_tables.py # Python script to execute the SQL file
-│ ├── insert_data.py # Python script to import CSV data
-│ ├── query_data.py # Python script to query and display results
-│ ├── book_db.sqlite # The actual SQLite database
-│
+├── book_db.sqlite # SQLite database file
+├── create_tables.py # Python script to create tables
+├── insert_data.py # Python script to insert data
+├── query_data.py # Python script to run SQL SELECT queries
+├── sql_create/
+│ └── create_tables.sql # SQL file with table creation
+├── sql_insert/
+│ └── insert_records.sql # SQL file to insert authors and books
+├── sql_queries/
+│ ├── select_books.sql
+│ ├── select_books_ordered.sql
+│ ├── select_books_after_1950.sql
+│ ├── select_books_with_authors.sql
+│ ├── select_authors_distinct.sql
+│ ├── update_author_name.sql
+│ └── delete_book_by_title.sql
 ├── data/
-│ ├── authors.csv # CSV data for authors
-│ ├── books.csv # CSV data for books
+│ ├── authors.csv
+│ └── books.csv
+└── README.md
+
 
 ---
 
-## 🧪 How to Use
+## ✅ Skills Demonstrated
 
-To set up and run the project:
+- ✔ Create a SQLite database using Python
+- ✔ Create tables with foreign key relationships
+- ✔ Insert data via SQL scripts
+- ✔ Read and display records using `SELECT`
+- ✔ Use `WHERE` to filter records
+- ✔ Use `ORDER BY` to sort records
+- ✔ Use `JOIN` to combine related tables
+- ✔ Use `DISTINCT` to remove duplicates
+- ✔ Update data using `UPDATE`
+- ✔ Delete records using `DELETE`
 
-1. **Activate the virtual environment** (if not already):
-   ```bash
-   .\.venv\Scripts\Activate.ps1     # On Windows PowerShell
+---
 
-🛠 Technologies Used
+## 💡 Sample SQL Queries Used
 
-Python 3.13
+```sql
+-- Select all books
+SELECT * FROM books;
 
-SQLite (via sqlite3 module)
+-- Select books after 1950
+SELECT * FROM books WHERE year_published > 1950;
 
-CSV file processing (csv module)
+-- Order books by year descending
+SELECT * FROM books ORDER BY year_published DESC;
 
-VS Code
+-- Join books with authors
+SELECT books.title, authors.first, authors.last
+FROM books
+INNER JOIN authors ON books.author_id = authors.author_id;
 
-Git / GitHub for version control
+-- Update author name
+UPDATE authors SET first = 'Nelle' WHERE last = 'Lee';
 
-📌 Notes
-Data is loaded from CSV files stored in the data/ directory.
+-- Delete a specific book
+DELETE FROM books WHERE title = '1984';
 
-The foreign key relationship ensures that each book references a valid author.
+🧪 How to Run
+From the project root folder, in your terminal:
 
-The system prints clear logs to confirm each operation.
+# Create database and tables
+python create_tables.py
 
-👨‍💻 Author
-Sabri Hamdaoui
+# Insert records into tables
+python insert_data.py
+
+# Run SELECT queries
+python query_data.py
+
+✍️ Author
+Sabri Hamdaoui – Data Analytics Student
+Module 5 – SQL Fundamentals
 Northwest Missouri State University
-Data Analytics - Module 5 Project
-
 
